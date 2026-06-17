@@ -352,7 +352,7 @@ function App() {
   return (
     <div className="app-container">
       <header className="header">
-        <div className="logo">StablecoinCity<span className="logo-dot">.</span></div>
+        <div className="logo">StablecoinSkill<span className="logo-dot">.</span></div>
         <TonConnectButton />
       </header>
 

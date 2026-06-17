@@ -33,7 +33,7 @@ export default defineConfig({
             
             const manifest = {
               url: origin,
-              name: "StablecoinCity",
+              name: "StablecoinSkill",
               iconUrl: "https://ton.org/static/my_dash_logo.png",
               description: "Marketplace de Skills para Termux y AI"
             };
@@ -63,7 +63,7 @@ export default defineConfig({
             
             const manifest = {
               url: origin,
-              name: "StablecoinCity",
+              name: "StablecoinSkill",
               iconUrl: "https://ton.org/static/my_dash_logo.png",
               description: "Marketplace de Skills para Termux y AI"
             };
