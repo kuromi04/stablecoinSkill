@@ -14,10 +14,10 @@ interface Skill {
 
 // --- CONFIGURACIÓN DE PRODUCTOS ---
 const MOCK_SKILLS: Skill[] = [
-  { id: 1, name: 'Termux Web Server', price: '0.01', category: 'Termux', icon: <Terminal size={20} />, nftAddress: 'EQBvW8ZxyDxSnnSreDrAtBy_v6RAl8T9o659pWf0D9V9-6Zf' },
-  { id: 2, name: 'Auto GPT Prompt', price: '0.05', category: 'AI', icon: <Bot size={20} />, nftAddress: 'EQC3_a7x-X8Y7w6v5u4t3s2r1q0p9o8n7m6l5k4j3i2h1g0f' },
-  { id: 3, name: 'Termux SSH Setup', price: '0.1', category: 'Termux', icon: <Terminal size={20} />, nftAddress: 'EQD9-i8h7g6f5e4d3c2b1a0Z9Y8X7W6V5U4T3S2R1Q0P9O8N' },
-  { id: 4, name: 'AI Image Generator', price: '0.2', category: 'AI', icon: <Zap size={20} />, nftAddress: 'EQB4_v3u2t1s0r9q8p7o6n5m4l3k2j1i0h9g8f7e6d5c4b3a' },
+  { id: 1, name: 'Termux Web Server', price: '0.01', category: 'Termux', icon: <Terminal size={20} />, nftAddress: 'EQCOsAsYMFi52GBzNbkUIwJwaW5DBL489oh5DOUJ1H75PCjw' },
+  { id: 2, name: 'Auto GPT Prompt', price: '0.05', category: 'AI', icon: <Bot size={20} />, nftAddress: 'EQDcEIR9aeOF1Op4Mi6EhNIkq1rDrkCOXdGPh-6YnTO2ClV3' },
+  { id: 3, name: 'Termux SSH Setup', price: '0.1', category: 'Termux', icon: <Terminal size={20} />, nftAddress: 'EQAJGZ-Ar-cPGpYZ6jG79uca2CjpmaUEMkCRSJpvhq5uRc03' },
+  { id: 4, name: 'AI Image Generator', price: '0.2', category: 'AI', icon: <Zap size={20} />, nftAddress: 'EQBqK8J0ITWsckDoRAUYTKibso52dWox_mieQL4m3EO8iu68' },
 ];
 
 function App() {
