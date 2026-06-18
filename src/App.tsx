@@ -87,6 +87,7 @@ const INITIAL_SKILLS: Skill[] = [
 function App() {
   const [activeTab, setActiveTab] = useState<'shop' | 'upload' | 'profile'>('shop');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   
   // Load skills from localStorage key stablecoincity_skills, or fallback to INITIAL_SKILLS
   const [skills, setSkills] = useState<Skill[]>(() => {
@@ -430,16 +431,16 @@ function App() {
 
           <main className="skills-grid">
             {filteredSkills.map(skill => (
-              <div key={skill.id} className="skill-card">
+              <div key={skill.id} className="skill-card interactive-skill-card" onClick={() => setSelectedSkill(skill)}>
+                <div className="skill-card-glow"></div>
                 <div className="skill-card-header">
                   <div className="skill-icon">{skill.icon}</div>
                   <span className={`category-badge ${skill.category.toLowerCase()}`}>{skill.category}</span>
                 </div>
                 <div className="skill-name">{skill.name}</div>
-                <p className="skill-desc">{skill.description}</p>
                 <div className="skill-card-footer">
-                  <div className="skill-price">{skill.price} TON</div>
-                  <button className="buy-button" onClick={() => handleBuy(skill)}>Comprar</button>
+                  <div className="skill-price-tag">{skill.price} TON</div>
+                  <span className="skill-action-hint">Detalles &rarr;</span>
                 </div>
               </div>
             ))}
@@ -749,11 +750,84 @@ function App() {
         <p>SKILLcoin &bull; Creado por <strong>kuromi04</strong> desde <strong>Termux</strong></p>
       </footer>
 
-      <nav className="bottom-nav">
-        <div className={`nav-item ${activeTab === 'shop' ? 'active' : ''}`} onClick={() => setActiveTab('shop')}><ShoppingBag size={20} /><span>Tienda</span></div>
-        <div className={`nav-item ${activeTab === 'upload' ? 'active' : ''}`} onClick={() => setActiveTab('upload')}><PlusCircle size={20} /><span>Subir</span></div>
-        <div className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => setActiveTab('profile')}><User size={20} /><span>Perfil</span></div>
-      </nav>
+      {selectedSkill && (
+        <div className="bottom-sheet-overlay" onClick={() => setSelectedSkill(null)}>
+          <div className="bottom-sheet" onClick={(e) => e.stopPropagation()}>
+            <div className="bottom-sheet-bar" onClick={() => setSelectedSkill(null)}></div>
+            <div className="bottom-sheet-header">
+              <div className="bottom-sheet-title-row">
+                <div className="bottom-sheet-icon">{selectedSkill.icon}</div>
+                <div>
+                  <h3 className="bottom-sheet-title">{selectedSkill.name}</h3>
+                  <span className={`category-badge ${selectedSkill.category.toLowerCase()}`}>{selectedSkill.category}</span>
+                </div>
+              </div>
+              <button className="close-sheet-btn" onClick={() => setSelectedSkill(null)}>
+                <X size={20} />
+              </button>
+            </div>
+            
+            <div className="bottom-sheet-body">
+              <div className="bottom-sheet-section">
+                <span className="section-label">Descripción</span>
+                <p className="bottom-sheet-desc">{selectedSkill.description}</p>
+              </div>
+
+              <div className="bottom-sheet-section">
+                <span className="section-label">Detalles de la Habilidad</span>
+                <div className="tech-details-box">
+                  <div className="tech-detail-row">
+                    <span className="detail-key">NFT Address:</span>
+                    <span className="detail-value addr-value">
+                      {selectedSkill.nftAddress.slice(0, 10)}...{selectedSkill.nftAddress.slice(-8)}
+                      <button className="copy-addr-btn" onClick={() => {
+                        navigator.clipboard.writeText(selectedSkill.nftAddress);
+                        alert('📋 ¡Dirección de contrato copiada!');
+                      }} title="Copiar Dirección">
+                        <Copy size={12} />
+                      </button>
+                    </span>
+                  </div>
+                  <div className="tech-detail-row">
+                    <span className="detail-key">Precio:</span>
+                    <span className="detail-value price-value">{selectedSkill.price} TON</span>
+                  </div>
+                  <div className="tech-detail-row">
+                    <span className="detail-key">Entorno:</span>
+                    <span className="detail-value">Termux Android / Linux</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bottom-sheet-footer">
+              {purchasedAddresses.includes(selectedSkill.nftAddress) ? (
+                <button 
+                  className="sheet-action-btn success-btn"
+                  onClick={() => {
+                    handleDownloadScript(selectedSkill);
+                    setSelectedSkill(null);
+                  }}
+                >
+                  <FileCode size={18} />
+                  <span>Descargar Script Ejecutable</span>
+                </button>
+              ) : (
+                <button 
+                  className="sheet-action-btn buy-btn"
+                  onClick={() => {
+                    handleBuy(selectedSkill);
+                    setSelectedSkill(null);
+                  }}
+                >
+                  <Zap size={18} />
+                  <span>Comprar por {selectedSkill.price} TON</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
