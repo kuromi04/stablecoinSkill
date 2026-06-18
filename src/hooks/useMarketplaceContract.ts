@@ -65,7 +65,7 @@ export function useMarketplaceContract() {
                 const body = beginCell()
                     .storeUint(3900203407, 32) 
                     .storeAddress(nftAddr)
-                    .storeUint(toNano(priceInTon), 256)
+                    .storeInt(toNano(priceInTon), 257)
                     .endCell();
 
                 const transaction = {
