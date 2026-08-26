@@ -213,14 +213,19 @@ function App() {
         // Fallback to local storage if API fails temporarily
         const stored = localStorage.getItem('stablecoincity_skills');
         if (stored) {
-          const parsed = JSON.parse(stored) as Skill[];
-          setSkills(parsed.map(s => ({
-            ...s,
-            icon: s.category === 'Termux' ? <Terminal size={20} /> : s.category === 'AI' ? <Bot size={20} /> : <Zap size={20} />
-          })));
-        } else {
-          setSkills(INITIAL_SKILLS);
+          try {
+            const parsed = JSON.parse(stored) as Skill[];
+            const hasInvalid = parsed.some(s => !s.nftAddress || s.nftAddress.length !== 48);
+            if (!hasInvalid) {
+              setSkills(parsed.map(s => ({
+                ...s,
+                icon: s.category === 'Termux' ? <Terminal size={20} /> : s.category === 'AI' ? <Bot size={20} /> : <Zap size={20} />
+              })));
+              return;
+            }
+          } catch (e) {}
         }
+        setSkills(INITIAL_SKILLS);
       });
   }, []);
   
