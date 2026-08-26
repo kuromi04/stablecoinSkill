@@ -44,44 +44,147 @@ const generateMockAddress = (): string => {
   return addr.toString({ bounceable: true, urlSafe: true });
 };
 
-// --- CONFIGURACIÓN DE PRODUCTOS INICIALES ---
 const INITIAL_SKILLS: Skill[] = [
-  { 
-    id: 1, 
-    name: 'Termux Web Server', 
-    price: '0.01', 
-    category: 'Termux', 
-    icon: <Terminal size={20} />, 
-    nftAddress: 'EQCOsAsYMFi52GBzNbkUIwJwaW5DBL489oh5DOUJ1H75PCjw',
-    description: 'Servidor web ultra ligero optimizado para correr directamente en Termux con NodeJS y soporte HTTPS local.'
+  {
+    id: 1000,
+    name: "actualizar_repo.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQ8jflh2KDGv6DdM-PL1W1m2CfYSHOKzU=",
+    description: "Script original de tu entorno: actualizar_repo.sh",
+    isUserListed: true
   },
-  { 
-    id: 2, 
-    name: 'Auto GPT Prompt', 
-    price: '0.05', 
-    category: 'AI', 
-    icon: <Bot size={20} />, 
-    nftAddress: 'EQDcEIR9aeOF1Op4Mi6EhNIkq1rDrkCOXdGPh-6YnTO2ClV3',
-    description: 'Sistema de prompts avanzados para bots autónomos con memoria a largo plazo y ejecución recursiva.'
+  {
+    id: 1001,
+    name: "ai-haklab.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQritb9EhMsFYkm18MskIfshPTZe6yShQ=",
+    description: "Script original de tu entorno: ai-haklab.sh",
+    isUserListed: true
   },
-  { 
-    id: 3, 
-    name: 'Termux SSH Setup', 
-    price: '0.1', 
-    category: 'Termux', 
-    icon: <Terminal size={20} />, 
-    nftAddress: 'EQAJGZ-Ar-cPGpYZ6jG79uca2CjpmaUEMkCRSJpvhq5uRc03',
-    description: 'Script automatizado de configuración SSH segura con autenticación por par de claves y protección contra fuerza bruta.'
+  {
+    id: 1002,
+    name: "hivebear_sd_revert.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQJhrqpXEG8R95dl7nlzMrlb7tHgSMHTM=",
+    description: "Script original de tu entorno: hivebear_sd_revert.sh",
+    isUserListed: true
   },
-  { 
-    id: 4, 
-    name: 'AI Image Generator', 
-    price: '0.2', 
-    category: 'AI', 
-    icon: <Zap size={20} />, 
-    nftAddress: 'EQBqK8J0ITWsckDoRAUYTKibso52dWox_mieQL4m3EO8iu68',
-    description: 'Interfaz para generación de imágenes por IA en segundo plano conectada a modelos Stable Diffusion de baja latencia.'
+  {
+    id: 1003,
+    name: "hivebear_sd_setup.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQnrIWO5KLdBIYCcSQxtoNPriabazznh4=",
+    description: "Script original de tu entorno: hivebear_sd_setup.sh",
+    isUserListed: true
   },
+  {
+    id: 1004,
+    name: "hub.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQeqkYd_fRNRE2zmkcTyWO_EImVORsub8=",
+    description: "Script original de tu entorno: hub.sh",
+    isUserListed: true
+  },
+  {
+    id: 1005,
+    name: "install-transcriber.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQFlF91V_MLxeXBFwfKxYi00uYV_jbyMo=",
+    description: "Script original de tu entorno: install-transcriber.sh",
+    isUserListed: true
+  },
+  {
+    id: 1006,
+    name: "install_baileys.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQH653MUwlUqagmt4rk0QCrfPNBXf9aoI=",
+    description: "Script original de tu entorno: install_baileys.sh",
+    isUserListed: true
+  },
+  {
+    id: 1007,
+    name: "install_hivebear.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQVz4A7d9tL0riDzythIGCj8L5XtZjrd0=",
+    description: "Script original de tu entorno: install_hivebear.sh",
+    isUserListed: true
+  },
+  {
+    id: 1008,
+    name: "installantigravity.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQb3lH98KZ4bpII3_twuepZGB4TXEUxis=",
+    description: "Script original de tu entorno: installantigravity.sh",
+    isUserListed: true
+  },
+  {
+    id: 1009,
+    name: "run.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQkvMBLHtejeNwBWEQkoZreX6EzF_Pua4=",
+    description: "Script original de tu entorno: run.sh",
+    isUserListed: true
+  },
+  {
+    id: 1010,
+    name: "save_registry.py",
+    price: "3",
+    category: "Termux",
+    icon: <Bot size={20} />,
+    nftAddress: "EQR31NzircYNxWsJLGIEUMwzSnGVuDq4Q=",
+    description: "Script original de tu entorno: save_registry.py",
+    isUserListed: true
+  },
+  {
+    id: 1011,
+    name: "setup_vps_hivebear.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQjoLaKDJG7t1925qmiWFjaUVNDZma0jQ=",
+    description: "Script original de tu entorno: setup_vps_hivebear.sh",
+    isUserListed: true
+  },
+  {
+    id: 1012,
+    name: "tts_nika.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Zap size={20} />,
+    nftAddress: "EQkvA9qOyermr2tycwLoMZ-PzEEyQQusE=",
+    description: "Script original de tu entorno: tts_nika.sh",
+    isUserListed: true
+  },
+  {
+    id: 1013,
+    name: "ver-readme.sh",
+    price: "3",
+    category: "Termux",
+    icon: <Terminal size={20} />,
+    nftAddress: "EQO0tcT-QOx9GO4FFoOAl3VuZ7idRujeA=",
+    description: "Script original de tu entorno: ver-readme.sh",
+    isUserListed: true
+  }
 ];
 
 function App() {
@@ -89,24 +192,35 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   
-  // Load skills from localStorage key stablecoincity_skills, or fallback to INITIAL_SKILLS
-  const [skills, setSkills] = useState<Skill[]>(() => {
-    try {
-      const stored = localStorage.getItem('stablecoincity_skills');
-      if (stored) {
-        const parsed = JSON.parse(stored) as Skill[];
-        return parsed.map(s => ({
+  const [skills, setSkills] = useState<Skill[]>([]);
+  const [activeCategory, setActiveCategory] = useState<'All' | 'Termux' | 'AI' | 'General'>('All');
+  
+  useEffect(() => {
+    // Load skills from backend API
+    fetch('http://localhost:3001/api/skills')
+      .then(res => res.json())
+      .then(data => {
+        const skillsWithIcons = data.map((s: any) => ({
           ...s,
           icon: s.category === 'Termux' ? <Terminal size={20} /> : s.category === 'AI' ? <Bot size={20} /> : <Zap size={20} />
         }));
-      }
-    } catch (e) {
-      console.error("Error loading skills from localStorage", e);
-    }
-    return INITIAL_SKILLS;
-  });
-
-  const [activeCategory, setActiveCategory] = useState<'All' | 'Termux' | 'AI' | 'General'>('All');
+        setSkills(skillsWithIcons);
+      })
+      .catch(err => {
+        console.error("Error loading skills from API", err);
+        // Fallback to local storage if API fails temporarily
+        const stored = localStorage.getItem('stablecoincity_skills');
+        if (stored) {
+          const parsed = JSON.parse(stored) as Skill[];
+          setSkills(parsed.map(s => ({
+            ...s,
+            icon: s.category === 'Termux' ? <Terminal size={20} /> : s.category === 'AI' ? <Bot size={20} /> : <Zap size={20} />
+          })));
+        } else {
+          setSkills(INITIAL_SKILLS);
+        }
+      });
+  }, []);
   
   // Purchased skills state loaded from localStorage key stablecoincity_purchased
   const [purchasedAddresses, setPurchasedAddresses] = useState<string[]>(() => {
@@ -139,35 +253,7 @@ function App() {
   const [debugInfo, setDebugInfo] = useState<string>('');
   const [showDiagnostics, setShowDiagnostics] = useState(false);
 
-  // Mount logic: initialize stablecoincity_files if not present
-  useEffect(() => {
-    const existingFiles = localStorage.getItem('stablecoincity_files');
-    if (!existingFiles) {
-      const mockFiles = {
-        'EQCOsAsYMFi52GBzNbkUIwJwaW5DBL489oh5DOUJ1H75PCjw': {
-          name: 'termux-web-server.sh',
-          content: `#!/bin/bash\necho "Starting Termux Web Server..."\npkg install nodejs -y\nnpm install -g http-server\nhttp-server -p 8080 -S -C cert.pem -K key.pem\n`,
-          size: 134
-        },
-        'EQDcEIR9aeOF1Op4Mi6EhNIkq1rDrkCOXdGPh-6YnTO2ClV3': {
-          name: 'autogpt-prompt.txt',
-          content: `[System Prompt]\nYou are Auto-GPT, an autonomous AI agent.\nYour goals are to browse the web, execute terminal commands, and save results.\nAlways analyze command output recursively before determining the next action.\n`,
-          size: 202
-        },
-        'EQAJGZ-Ar-cPGpYZ6jG79uca2CjpmaUEMkCRSJpvhq5uRc03': {
-          name: 'setup-ssh.sh',
-          content: `#!/bin/bash\necho "Setting up SSH in Termux..."\npkg install openssh -y\nsshd\necho "SSH Server started on port 8022. Run 'whoami' to get your user."\n`,
-          size: 147
-        },
-        'EQBqK8J0ITWsckDoRAUYTKibso52dWox_mieQL4m3EO8iu68': {
-          name: 'ai-gen.py',
-          content: `import requests\nimport json\nprint("Generating image with Stable Diffusion API...")\nresponse = requests.post("https://api.stablediffusion.local/v1/txt2img", json={"prompt": "beautiful futuristic cybercity, cyberpunk, 8k resolution"})\nwith open("output.png", "wb") as f:\n    f.write(response.content)\nprint("Image saved to output.png")\n`,
-          size: 304
-        }
-      };
-      localStorage.setItem('stablecoincity_files', JSON.stringify(mockFiles));
-    }
-  }, []);
+  // API fetch can be done here to load initial skills from the backend in a full implementation.
 
   const filteredSkills = skills.filter(
     skill => activeCategory === 'All' || skill.category === activeCategory
@@ -201,22 +287,21 @@ function App() {
     }
   };
 
-  const handleDownloadScript = (skill: Skill) => {
+  const handleDownloadScript = async (skill: Skill) => {
     try {
-      const existingFiles = localStorage.getItem('stablecoincity_files');
-      const filesObj = existingFiles ? JSON.parse(existingFiles) : {};
-      const fileData = filesObj[skill.nftAddress];
+      // In a real app, you would pass an auth token here
+      const response = await fetch(`http://localhost:3001/api/files/${skill.nftAddress}`);
       
-      if (!fileData) {
-        alert('❌ Archivo de script no encontrado en el almacenamiento local.');
-        return;
+      if (!response.ok) {
+        throw new Error('Archivo no encontrado en el servidor seguro.');
       }
 
-      const blob = new Blob([fileData.content], { type: 'text/plain;charset=utf-8' });
+      const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = fileData.name || 'script.txt';
+      // You could extract filename from Content-Disposition header if needed, but let's default to skill name
+      link.download = `${skill.name.replace(/\s+/g, '_')}.sh`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -238,6 +323,12 @@ function App() {
       return;
     }
     
+    // Validar visualmente la compra con el usuario
+    const confirmPurchase = window.confirm(`¿Estás seguro de comprar "${skill.name}" por ${skill.price} TON?`);
+    if (!confirmPurchase) {
+        return;
+    }
+
     try {
       await buySkill(skill.nftAddress, skill.price);
       
@@ -264,14 +355,6 @@ function App() {
     }
 
     try {
-      // Read the file as text first
-      const fileContent = await new Promise<string>((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (event) => resolve(event.target?.result as string || '');
-        reader.onerror = () => reject(new Error('Error al leer el archivo.'));
-        reader.readAsText(file);
-      });
-
       setUploadState('ipfs');
       await new Promise(resolve => setTimeout(resolve, 2000));
       setUploadState('minting');
@@ -280,18 +363,22 @@ function App() {
       setUploadState('listing');
       await listSkill(newNftAddress, price);
 
-      // Save file data to stablecoincity_files in localStorage
-      try {
-        const existingFiles = localStorage.getItem('stablecoincity_files');
-        const filesObj = existingFiles ? JSON.parse(existingFiles) : {};
-        filesObj[newNftAddress] = {
-          name: file.name,
-          content: fileContent,
-          size: file.size
-        };
-        localStorage.setItem('stablecoincity_files', JSON.stringify(filesObj));
-      } catch (err) {
-        console.error("Error saving file to localStorage stablecoincity_files:", err);
+      // Save file data to secure backend API
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('price', price);
+      formData.append('category', category);
+      formData.append('nftAddress', newNftAddress);
+
+      const response = await fetch('http://localhost:3001/api/files', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al subir el archivo al servidor seguro');
       }
 
       const newSkill: Skill = {
@@ -307,7 +394,6 @@ function App() {
 
       setSkills(prev => {
         const next = [...prev, newSkill];
-        // Strip icons before saving to localStorage to prevent circular refs/failures
         const forStorage = next.map(({ icon, ...rest }) => rest);
         localStorage.setItem('stablecoincity_skills', JSON.stringify(forStorage));
         return next;

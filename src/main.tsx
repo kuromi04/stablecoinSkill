@@ -12,9 +12,10 @@ window.Buffer = Buffer;
 // Inicializar Telegram WebApp
 WebApp.ready();
 
-// En Android/TMA, es vital que el manifest esté en HTTPS si se usa en producción.
-// Para local, usamos la URL actual.
-const manifestUrl = new URL('tonconnect-manifest.json', window.location.href).href;
+// Ya que tienes GitHub Pages funcionando, forzamos a la app local
+// a usar el manifiesto oficial de tu entorno de producción para 
+// engañar a la wallet y evitar el error de localhost.
+const manifestUrl = 'https://kuromi04.github.io/stablecoinSkill/tonconnect-manifest.json';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

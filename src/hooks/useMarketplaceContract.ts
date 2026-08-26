@@ -9,16 +9,30 @@ const MARKETPLACE_ADDRESS = 'EQCxhChW7krycdlpFSncAD0ZH38nNABbuH_YorLdsjx6MnKm';
 export function useMarketplaceContract() {
     const [tonConnectUI] = useTonConnectUI();
 
+    const validateInput = (nftAddress: string, priceInTon: string) => {
+        let nftAddr: Address;
+        try {
+            nftAddr = Address.parse(nftAddress);
+        } catch (e) {
+            throw new Error('Dirección NFT inválida o corrupta.');
+        }
+
+        const priceNum = parseFloat(priceInTon);
+        if (isNaN(priceNum) || priceNum <= 0) {
+            throw new Error('El precio debe ser un número mayor a 0.');
+        }
+        
+        return { nftAddr };
+    };
+
     return useMemo(() => {
         return {
             buySkill: async (nftAddress: string, priceInTon: string) => {
                 console.log('Preparando transacción de compra...');
-                const nftAddr = Address.parse(nftAddress);
+                const { nftAddr } = validateInput(nftAddress, priceInTon);
                 const marketplaceAddr = Address.parse(MARKETPLACE_ADDRESS);
 
-                // OpCode para Tact 'Buy' (CRC32 de la firma del mensaje)
-                // Usualmente Tact genera un OpCode basado en el nombre del mensaje.
-                // Si el mensaje es "Buy", el opcode suele ser 0x03ebe671 (65819249)
+                // OpCode para Tact 'Buy'
                 const body = beginCell()
                     .storeUint(0x03ebe671, 32) 
                     .storeAddress(nftAddr)
@@ -31,8 +45,8 @@ export function useMarketplaceContract() {
                     validUntil: Math.floor(Date.now() / 1000) + 600, // 10 minutos
                     messages: [
                         {
-                            address: marketplaceAddr.toString(), // Usar friendly string (Base64) requerida por la wallet
-                            amount: (toNano(priceInTon) + toNano('0.05')).toString(), // Agregar 0.05 TON para cubrir el fee de gas/forwarding
+                            address: marketplaceAddr.toString(), 
+                            amount: (toNano(priceInTon) + toNano('0.05')).toString(), 
                             payload: payloadBoc,
                         },
                     ],
@@ -58,7 +72,7 @@ export function useMarketplaceContract() {
             },
             
             listSkill: async (nftAddress: string, priceInTon: string) => {
-                const nftAddr = Address.parse(nftAddress);
+                const { nftAddr } = validateInput(nftAddress, priceInTon);
                 const marketplaceAddr = Address.parse(MARKETPLACE_ADDRESS);
 
                 // OpCode real de Tact para 'ListSkill' es 3900203407 (0xe878618f)
