@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TonConnectButton, useTonConnectUI, useTonAddress } from '@tonconnect/ui-react';
+import { TonConnectButton, useTonConnectUI, useTonAddress, THEME } from '@tonconnect/ui-react';
 import { 
   Terminal, 
   Bot, 
@@ -254,7 +254,7 @@ function App() {
     if (tonConnectUI) {
       tonConnectUI.uiOptions = {
         uiPreferences: {
-          theme: theme === 'dark' ? 'dark' : 'light'
+          theme: theme === 'dark' ? THEME.DARK : THEME.LIGHT
         }
       };
     }

@@ -1,4 +1,4 @@
-import { useTonConnectUI } from '@tonconnect/ui-react';
+import { TonConnectButton, useTonConnectUI, useTonAddress } from '@tonconnect/ui-react';
 import { Address, beginCell, toNano } from '@ton/core';
 import { useMemo } from 'react';
 import { Buffer } from 'buffer';
