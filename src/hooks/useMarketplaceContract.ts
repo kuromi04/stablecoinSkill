@@ -7,7 +7,7 @@ import { Buffer } from 'buffer';
 const MARKETPLACE_ADDRESS = 'EQCxhChW7krycdlpFSncAD0ZH38nNABbuH_YorLdsjx6MnKm'; 
 
 export function useMarketplaceContract() {
-    const [tonConnectUI] = useTonConnectUI();
+    const tonConnectUI = useTonConnectUI()[0];
 
     const validateInput = (nftAddress: string, priceInTon: string) => {
         let nftAddr: Address;
