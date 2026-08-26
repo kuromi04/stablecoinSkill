@@ -4,34 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost:3001; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tonviewer.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' http://localhost:3001 https://tonapi.io https://bridge.ton.space wss://bridge.ton.space;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost:3001; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tonviewer.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: http:; connect-src 'self' http://localhost:3001 https://*.tonapi.io wss://*.tonapi.io https://*.tonkeeper.org wss://*.tonkeeper.org https://*.ton.space wss://*.ton.space https://*.mytonwallet.org wss://*.mytonwallet.org https://*.tonconnect.tg wss://*.tonconnect.tg;">
     <title>SKILLcoin - Termux Marketplace</title>
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      window.onerror = function(msg, url, line, col, error) {
-        var div = document.createElement('div');
-        div.style.color = 'red';
-        div.style.position = 'fixed';
-        div.style.top = '0';
-        div.style.left = '0';
-        div.style.width = '100%';
-        div.style.height = '100%';
-        div.style.background = 'white';
-        div.style.zIndex = '9999';
-        div.style.padding = '20px';
-        div.style.overflow = 'auto';
-        div.style.fontFamily = 'monospace';
-        div.innerHTML = '<h1>❌ Error Detectado</h1>' +
-                        '<p><b>Mensaje:</b> ' + msg + '</p>' +
-                        '<p><b>Archivo:</b> ' + url + '</p>' +
-                        '<p><b>Línea:</b> ' + line + '</p>' +
-                        '<pre>' + (error ? error.stack : 'No hay stack trace disponible') + '</pre>';
-        document.body.appendChild(div);
-        return false;
-      };
-    </script>
+    <!-- Removed error hijacking script to keep interface clean -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -17,7 +17,9 @@ import {
   Sparkles,
   Info,
   Menu,
-  X
+  X,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useMarketplaceContract } from './hooks/useMarketplaceContract';
 import { Address } from '@ton/core';
@@ -240,6 +242,28 @@ function App() {
   const [tonConnectUI] = useTonConnectUI();
   const walletAddress = useTonAddress();
 
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'light' || stored === 'dark') return stored;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (tonConnectUI) {
+      tonConnectUI.uiOptions = {
+        uiPreferences: {
+          theme: theme === 'dark' ? 'dark' : 'light'
+        }
+      };
+    }
+  }, [theme, tonConnectUI]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
   // Upload Form state
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -451,7 +475,17 @@ function App() {
             <div className="logo">SKILLcoin<span className="logo-dot">.</span></div>
           </div>
         </div>
-        <TonConnectButton />
+        <div id="ton-connect-button-container" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <button 
+            onClick={toggleTheme} 
+            className="theme-toggle-btn"
+            title={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+            aria-label="Cambiar tema"
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <TonConnectButton />
+        </div>
       </header>
 
       {isMenuOpen && (
