@@ -53,7 +53,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQ8jflh2KDGv6DdM-PL1W1m2CfYSHOKzU=",
+    nftAddress: "EQB5MKRVy0si3NXRLhzWAd9lky_o5uQ-lj9US4pIaqMUToSc",
     description: "Script original de tu entorno: actualizar_repo.sh",
     isUserListed: true
   },
@@ -63,7 +63,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQritb9EhMsFYkm18MskIfshPTZe6yShQ=",
+    nftAddress: "EQA4XvfOMl9pEG3Qg_mW5zfAohSiK9J6MUgQVvDRwIwcB6-V",
     description: "Script original de tu entorno: ai-haklab.sh",
     isUserListed: true
   },
@@ -73,7 +73,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQJhrqpXEG8R95dl7nlzMrlb7tHgSMHTM=",
+    nftAddress: "EQBWuAI8rwDR0WrKsNgsCimsWVzyY9NNqJXQcIy6anJDqFZo",
     description: "Script original de tu entorno: hivebear_sd_revert.sh",
     isUserListed: true
   },
@@ -83,7 +83,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQnrIWO5KLdBIYCcSQxtoNPriabazznh4=",
+    nftAddress: "EQA2SyOAoC98c9-oHgif-wAjUzw49RfzTEzZPn-wJEzXR4DH",
     description: "Script original de tu entorno: hivebear_sd_setup.sh",
     isUserListed: true
   },
@@ -93,7 +93,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQeqkYd_fRNRE2zmkcTyWO_EImVORsub8=",
+    nftAddress: "EQDmIrtZPD1vq3NuVjAuPQMwa7yyMpJ8crMH_9g9gtbc_fb7",
     description: "Script original de tu entorno: hub.sh",
     isUserListed: true
   },
@@ -103,7 +103,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQFlF91V_MLxeXBFwfKxYi00uYV_jbyMo=",
+    nftAddress: "EQAbyh70x11bz4bJudJ9DxojonvKe73rMvD0dJwaKEOlUfM2",
     description: "Script original de tu entorno: install-transcriber.sh",
     isUserListed: true
   },
@@ -113,7 +113,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQH653MUwlUqagmt4rk0QCrfPNBXf9aoI=",
+    nftAddress: "EQAKz2fD6b74AwFxY1T9rkn8qn2C7kMaXhivyKIKNRaoRSvn",
     description: "Script original de tu entorno: install_baileys.sh",
     isUserListed: true
   },
@@ -123,7 +123,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQVz4A7d9tL0riDzythIGCj8L5XtZjrd0=",
+    nftAddress: "EQBnE7i6K7KIZLQBCtYA12E6UGrVyAlfzFcc2RDEoJDI5rtB",
     description: "Script original de tu entorno: install_hivebear.sh",
     isUserListed: true
   },
@@ -133,7 +133,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQb3lH98KZ4bpII3_twuepZGB4TXEUxis=",
+    nftAddress: "EQDIjP2JwDaMFyQYiCTqs4c4yoT79EkpuuMuzdFujlqyqVD2",
     description: "Script original de tu entorno: installantigravity.sh",
     isUserListed: true
   },
@@ -143,7 +143,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQkvMBLHtejeNwBWEQkoZreX6EzF_Pua4=",
+    nftAddress: "EQDwvIiVXVk44KFwVoUcWaqwVf4W_sjxI1W19P1fwkrcojnM",
     description: "Script original de tu entorno: run.sh",
     isUserListed: true
   },
@@ -153,7 +153,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Bot size={20} />,
-    nftAddress: "EQR31NzircYNxWsJLGIEUMwzSnGVuDq4Q=",
+    nftAddress: "EQAka8WnwpxZT31Ue_suIOLuKb4LSK-hRe6z8GxBgiS6YqN4",
     description: "Script original de tu entorno: save_registry.py",
     isUserListed: true
   },
@@ -163,7 +163,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQjoLaKDJG7t1925qmiWFjaUVNDZma0jQ=",
+    nftAddress: "EQC0KX8CQaTA1KL9jxwlLCZrOIfuYda0mo8qTUfXGDW10PVd",
     description: "Script original de tu entorno: setup_vps_hivebear.sh",
     isUserListed: true
   },
@@ -173,7 +173,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Zap size={20} />,
-    nftAddress: "EQkvA9qOyermr2tycwLoMZ-PzEEyQQusE=",
+    nftAddress: "EQAab5QOgElgxd2-8ID8R7HRYQo_bbPlWiHE1eFcuWDofQY4",
     description: "Script original de tu entorno: tts_nika.sh",
     isUserListed: true
   },
@@ -183,7 +183,7 @@ const INITIAL_SKILLS: Skill[] = [
     price: "3",
     category: "Termux",
     icon: <Terminal size={20} />,
-    nftAddress: "EQO0tcT-QOx9GO4FFoOAl3VuZ7idRujeA=",
+    nftAddress: "EQD97WqJHZt9OWY6D-dFyCu3ieovxjz7LzMij0bbA-oJFm8n",
     description: "Script original de tu entorno: ver-readme.sh",
     isUserListed: true
   }
