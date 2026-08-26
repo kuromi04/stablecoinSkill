@@ -19,7 +19,9 @@ import {
   Menu,
   X,
   Sun,
-  Moon
+  Moon,
+  Edit,
+  Trash2
 } from 'lucide-react';
 import { useMarketplaceContract } from './hooks/useMarketplaceContract';
 import { Address } from '@ton/core';
@@ -278,6 +280,14 @@ function App() {
   const [dragActive, setDragActive] = useState(false);
   const [uploadState, setUploadState] = useState<'idle' | 'ipfs' | 'minting' | 'listing' | 'success'>('idle');
 
+  // Edit Skill state
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editingSkill, setEditingSkill] = useState<Skill | null>(null);
+  const [editName, setEditName] = useState('');
+  const [editDescription, setEditDescription] = useState('');
+  const [editPrice, setEditPrice] = useState('');
+  const [editCategory, setEditCategory] = useState<'Termux' | 'AI' | 'General'>('Termux');
+
   // Diagnostics panel state
   const [debugInfo, setDebugInfo] = useState<string>('');
   const [showDiagnostics, setShowDiagnostics] = useState(false);
@@ -368,6 +378,77 @@ function App() {
       alert('✅ Transacción enviada correctamente!');
     } catch (e: any) {
       alert(`❌ Error: ${e?.message || 'Error desconocido'}`);
+    }
+  };
+
+  const handleDeleteSkill = async (skill: Skill) => {
+    if (!window.confirm(`¿Estás seguro de que deseas borrar la habilidad "${skill.name}"?`)) {
+      return;
+    }
+    
+    setSkills(prev => {
+      const next = prev.filter(s => s.id !== skill.id);
+      const forStorage = next.map(({ icon, ...rest }) => rest);
+      localStorage.setItem('stablecoincity_skills', JSON.stringify(forStorage));
+      return next;
+    });
+
+    try {
+      await fetch(`http://localhost:3001/api/skills/${skill.id}`, {
+        method: 'DELETE'
+      });
+    } catch (e) {
+      console.warn("Backend offline o error al borrar en el servidor:", e);
+    }
+  };
+
+  const handleOpenEditModal = (skill: Skill) => {
+    setEditingSkill(skill);
+    setEditName(skill.name);
+    setEditDescription(skill.description);
+    setEditPrice(skill.price);
+    setEditCategory(skill.category);
+    setIsEditModalOpen(true);
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingSkill) return;
+
+    const updatedSkill = {
+      ...editingSkill,
+      name: editName,
+      description: editDescription,
+      price: editPrice,
+      category: editCategory,
+      icon: editCategory === 'Termux' ? <Terminal size={20} /> : editCategory === 'AI' ? <Bot size={20} /> : <Zap size={20} />
+    };
+
+    setSkills(prev => {
+      const next = prev.map(s => s.id === editingSkill.id ? updatedSkill : s);
+      const forStorage = next.map(({ icon, ...rest }) => rest);
+      localStorage.setItem('stablecoincity_skills', JSON.stringify(forStorage));
+      return next;
+    });
+
+    setIsEditModalOpen(false);
+    setEditingSkill(null);
+
+    try {
+      await fetch(`http://localhost:3001/api/skills/${editingSkill.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: editName,
+          description: editDescription,
+          price: editPrice,
+          category: editCategory
+        })
+      });
+    } catch (e) {
+      console.warn("Backend offline o error al actualizar en el servidor:", e);
     }
   };
 
@@ -763,7 +844,25 @@ function App() {
                           <div className="user-skill-name">{skill.name}</div>
                           <div className="user-skill-addr">{skill.nftAddress.slice(0, 10)}...{skill.nftAddress.slice(-8)}</div>
                         </div>
-                        <div className="user-skill-price">{skill.price} TON</div>
+                        <div className="user-skill-meta-actions">
+                          <div className="user-skill-price">{skill.price} TON</div>
+                          <div className="user-skill-buttons">
+                            <button 
+                              onClick={() => handleOpenEditModal(skill)} 
+                              className="user-action-btn edit-btn"
+                              title="Modificar Habilidad"
+                            >
+                              <Edit size={14} /> Modificar
+                            </button>
+                            <button 
+                              onClick={() => handleDeleteSkill(skill)} 
+                              className="user-action-btn delete-btn"
+                              title="Borrar Habilidad"
+                            >
+                              <Trash2 size={14} /> Borrar
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -950,6 +1049,90 @@ function App() {
                 </button>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {isEditModalOpen && editingSkill && (
+        <div className="bottom-sheet-overlay" onClick={() => {
+          setIsEditModalOpen(false);
+          setEditingSkill(null);
+        }}>
+          <div className="bottom-sheet" onClick={(e) => e.stopPropagation()}>
+            <div className="bottom-sheet-bar" onClick={() => {
+              setIsEditModalOpen(false);
+              setEditingSkill(null);
+            }}></div>
+            <div className="bottom-sheet-header">
+              <div className="bottom-sheet-title-row">
+                <div className="bottom-sheet-icon"><Edit size={20} className="text-accent" /></div>
+                <div>
+                  <h3 className="bottom-sheet-title">Modificar Habilidad</h3>
+                  <span className="network-badge">Editar Detalles</span>
+                </div>
+              </div>
+              <button className="close-sheet-btn" onClick={() => {
+                setIsEditModalOpen(false);
+                setEditingSkill(null);
+              }}>
+                <X size={20} />
+              </button>
+            </div>
+
+            <form onSubmit={handleEditSubmit} className="bottom-sheet-body upload-form" style={{ padding: '20px 0' }}>
+              <div className="form-group">
+                <label className="form-label">Nombre del Script / Skill</label>
+                <input 
+                  type="text" 
+                  className="form-input" 
+                  value={editName} 
+                  onChange={e => setEditName(e.target.value)} 
+                  required 
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Descripción</label>
+                <textarea 
+                  className="form-textarea" 
+                  value={editDescription} 
+                  onChange={e => setEditDescription(e.target.value)} 
+                  required 
+                  rows={4} 
+                />
+              </div>
+              <div className="form-row">
+                <div className="form-group half">
+                  <label className="form-label">Precio en TON</label>
+                  <input 
+                    type="number" 
+                    step="0.0001" 
+                    className="form-input" 
+                    value={editPrice} 
+                    onChange={e => setEditPrice(e.target.value)} 
+                    required 
+                  />
+                </div>
+                <div className="form-group half">
+                  <label className="form-label">Categoría</label>
+                  <select 
+                    className="form-select" 
+                    value={editCategory} 
+                    onChange={e => setEditCategory(e.target.value as any)} 
+                    required
+                  >
+                    <option value="Termux">Termux</option>
+                    <option value="AI">AI</option>
+                    <option value="General">General</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="bottom-sheet-footer" style={{ padding: '20px 0 0 0', background: 'transparent' }}>
+                <button type="submit" className="sheet-action-btn success-btn" style={{ width: '100%' }}>
+                  <span>Guardar Cambios</span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
